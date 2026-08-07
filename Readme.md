@@ -1,0 +1,1 @@
+Simple C Command line tool to retrive user activity of a User.
