@@ -1,4 +1,16 @@
 Simple C Command line tool to retrive user activity of a User.
+
+**How to Run code **
+
+    - requires libcurl, cJSON, gcc
+
+    - clone repository
+
+    - compile with `gcc main.c -o main -lcurl -lcjson`
+
+    - run program with `./main <username>`
+    
+
 Resources needed - [API 4 beginners](https://www.youtube.com/watch?v=WXsD0ZgxjRw)
 
 structure of program 
@@ -9,7 +21,7 @@ structure of program
 When your application launches:
 
     Argument Validation: It inspects the arguments passed to it in the terminal to verify a username was provided. If missing, it prints a usage guide and stops.
-
+    
     Networking Initialization: Before making any network calls, the underlying socket/HTTP library (libcurl) must initialize its global state and SSL mechanisms.
 
 **2. Dynamic Memory Buffer Allocation**
