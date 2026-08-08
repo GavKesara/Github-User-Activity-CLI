@@ -18,23 +18,16 @@ int check(char C){
     return 1;
 }
 
-int size_username(char* name,int size){
-    for(int i=0;i<size;i++){
-        if(name[i]=='\0'){
-            return i;
-            break;
-        }
-    }
-    return size;
-}
-
 void User_name_check(char* name,int max_size){
-    int user_size=size_username(name,max_size);
+    if(max_size>=40){
+        printf("Error! Username should be below 40 characters.");
+        exit(-1);
+    }
 
     if(name[0]=='-'){
         printf("Error! Cannot contain - in beginning.");
         exit(-1);
-    }else if(name[user_size]=='-'){
+    }else if(name[max_size]=='-'){
         printf("Error! Cannot end with - .");
         exit(-1);
     }else{

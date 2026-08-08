@@ -14,14 +14,15 @@ int main(int argc,char* argv[]){
         return(-1);
     }
 
-    char *User_name; //Alloctes space for 19 charanters + '\0'
+    char *User_name;
 
     User_name=argv[1];
+    int sizeof_name=sizeof(User_name)/sizeof(User_name[0]);
 
     User_name[strcspn(User_name,"\r\n")]='\0';
 
     Str_Mod_Space(User_name);
-    User_name_check(User_name,MAX_USER_CHAR);
+    User_name_check(User_name,sizeof_name);
     libcurl_GET(User_name);
 
     return 0;
