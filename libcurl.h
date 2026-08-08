@@ -4,13 +4,6 @@
 
 int libcurl_GET(char* username){
 
-    FILE *fp;
-    fp=fopen("curlGET.json","w");
-    if(fp==NULL){ 
-        printf("Error. File couldn't be created."); 
-        return -1;
-    }
-
     CURL *curl;
     CURLcode res;
 
@@ -27,7 +20,7 @@ int libcurl_GET(char* username){
 
     curl_easy_setopt(curl,CURLOPT_URL,url);
 
-    struct curl_slist *headers;
+    struct curl_slist *headers = NULL;
     headers=curl_slist_append(headers,"User-Agent: MyGitHubCLITool/1.0");
     curl_easy_setopt(curl,CURLOPT_HTTPHEADER,headers);
     
@@ -60,5 +53,5 @@ int libcurl_GET(char* username){
     curl_easy_cleanup(curl);
 
     curl_global_cleanup();
-    fclose(fp);
+    free(chunk.memory); //frees memory
 }

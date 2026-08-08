@@ -20,6 +20,7 @@ static size_t WriteMemoryCallBack(void *contents, size_t size, size_t nmemb, voi
         return 0;
     }
 
+    mem->memory=ptr;
     memcpy(&(mem->memory[mem->size]),contents,realsize);
     mem->size+=realsize;
     mem->memory[mem->size]=0;
@@ -43,8 +44,8 @@ cJSON *JSON_data(struct MemoryChunk chunk,char* username){
             cJSON *event = cJSON_GetArrayItem(json,i);
 
             cJSON *type = cJSON_GetObjectItemCaseSensitive(event,"type");
-            cJSON *created_at = cJSON_GetObjectItemCaseSensitive(event,"created at");
-            cJSON *repo = cJSON_GetObjectItemCaseSensitive(event,"Repo");
+            cJSON *created_at = cJSON_GetObjectItemCaseSensitive(event,"created_at");
+            cJSON *repo = cJSON_GetObjectItemCaseSensitive(event,"repo");
             cJSON *repo_name = repo ? cJSON_GetObjectItemCaseSensitive(repo,"name") : NULL;
 
             printf("- [%s] %s on %s\n",
