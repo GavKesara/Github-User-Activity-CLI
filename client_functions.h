@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <string.h>
+#include <stdlib.h>
 #include <ctype.h>
 
 void Str_Mod_Space(char* name){
@@ -18,16 +18,35 @@ int check(char C){
     return 1;
 }
 
-void User_name_check(char* name){
-    for(int i=0;name[i]!='\0';i++){
-        if(name[0]=='-'){
-            printf("Error! Cannot contain - in beginning.");
+int size_username(char* name,int size){
+    for(int i=0;i<size;i++){
+        if(name[i]=='\0'){
+            return i;
             break;
         }
+    }
+    return size;
+}
 
-        if(check(name[i])){
-            printf("Error! Check Username Rules");
-            break;
+void User_name_check(char* name,int max_size){
+    int user_size=size_username(name,max_size);
+
+    if(name[0]=='-'){
+        printf("Error! Cannot contain - in beginning.");
+        exit(-1);
+    }else if(name[user_size]=='-'){
+        printf("Error! Cannot end with - .");
+        exit(-1);
+    }else{
+        for(int i=0;name[i]!='\0';i++){
+            if(check(name[i])){
+                printf("Error! Check Username Rules");
+                exit(-1);
+            }
+            if(name[i]=='-' && name[i+1]=='-'){
+                printf("Error! consecutive '-' not allowed.");
+                exit(-1);
+            }
         }
     }
 }
