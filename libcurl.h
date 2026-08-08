@@ -54,4 +54,5 @@ int libcurl_GET(char* username){
 
     curl_global_cleanup();
     free(chunk.memory); //frees memory
+    return 0;
 }
