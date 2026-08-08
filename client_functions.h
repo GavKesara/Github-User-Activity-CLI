@@ -27,7 +27,7 @@ void User_name_check(char* name,int max_size){
     if(name[0]=='-'){
         printf("Error! Cannot contain - in beginning.");
         exit(-1);
-    }else if(name[max_size]=='-'){
+    }else if(name[max_size-1]=='-'){
         printf("Error! Cannot end with - .");
         exit(-1);
     }else{

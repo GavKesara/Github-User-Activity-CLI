@@ -17,12 +17,12 @@ int main(int argc,char* argv[]){
     char *User_name;
 
     User_name=argv[1];
-    int sizeof_name=sizeof(User_name)/sizeof(User_name[0]);
+    size_t sizeof_name=strlen(User_name);
 
     User_name[strcspn(User_name,"\r\n")]='\0';
 
     Str_Mod_Space(User_name);
-    User_name_check(User_name,sizeof_name);
+    User_name_check(User_name,(int)sizeof_name);
     libcurl_GET(User_name);
 
     return 0;
